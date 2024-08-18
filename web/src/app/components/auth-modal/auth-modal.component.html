@@ -1,0 +1,75 @@
+
+
+<div class="card p-4 shadow-lg">
+        <button class="close text-right" (click)="onCloseModalClicked()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    @switch (viewStep) {
+        <!-- email password -->
+        @case (AuthStepEnum.LOGIN_PHONE_EMAIL_USERNAME) {
+            <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginFormSubmitted(loginFormGroup.value)">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input formControlName="username" type="text" class="form-control" id="username"   placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                  <label for="pass">Password</label>
+                  <input formControlName="password" type="password" class="form-control" id="pass" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+        }
+
+
+        <!-- Register -->
+
+        @case (AuthStepEnum.REGISTER) {
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="email"  placeholder="Enter username">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        }
+    
+        <!-- steps -->
+        @default {
+            <div class="card-body text-center">
+                <h5 class="card-title mb-4">Log in to Tiktok</h5>
+                <button class="btn btn-secondary w-100 mb-2" type="button" >
+                    <i class="bi bi-qr-code"></i> Use QR code
+                </button>
+                <button class="btn btn-secondary w-100 mb-2" type="button" 
+                    (click)="onGoToStepClicked(AuthStepEnum.LOGIN_PHONE_EMAIL_USERNAME)">
+                    <i class="bi bi-person"></i> Use phone / email / username
+                </button>
+                <button class="btn btn-secondary w-100 mb-2" type="button" >
+                    <i class="bi bi-facebook"></i> Continue with Facebook
+                </button>
+                <button class="btn btn-secondary w-100 mb-2" type="button" >
+                    <i class="bi bi-google"></i> Continue with Google
+                </button>
+                <button class="btn btn-secondary w-100 mb-2" type="button" >
+                    <i class="bi bi-twitter"></i> Continue with Twitter
+                </button>
+                <button class="btn btn-secondary w-100 mb-2" type="button" >
+                    <i class="bi bi-apple"></i> Continue with Apple
+                </button>
+            </div>
+            <div class="card-footer text-center">
+                <p class="mb-1">Don't have an account? <a class="text-info" 
+                        (click)="onGoToStepClicked(AuthStepEnum.REGISTER)">Sign up</a></p>
+                <!-- <small class="text-muted">By continuing with an account, you agree to our <a class="text-muted">Terms of Service</a> and acknowledge that you have read our <a href="#" class="text-muted">Privacy Policy</a>.</small> -->
+            </div>
+        }
+    }
+</div>

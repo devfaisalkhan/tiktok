@@ -21,7 +21,11 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-universal-zone/*": ["./node_modules/ngx-universal-zone/*"],
+      "ngx-universal-zone/database/*": ["./node_modules/ngx-universal-zone/database/*"],
+    } 
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
